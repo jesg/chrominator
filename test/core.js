@@ -126,5 +126,41 @@ describe('core api', function() {
             });
         });
 
+
+        it('can search google.com', function(done) {
+            CDP((client) => {
+                var driver;
+                var n;
+                Driver.createDriver(client).then((result) => {
+                    driver = result;
+                    return driver.navigate({url: 'https://www.google.com'});
+                }).then(() => {
+                    return driver.querySelector({selector: 'input[name="q"]'})
+                }).then((node) => {
+                    n = node
+                    return n.sendKeys('abc');
+                }).then(() => {
+                    // TODO we should spin the browser event loop
+                    return driver.delay(200);
+                }).then(() => {
+                    return driver.querySelector({selector: 'button[value="Search"]'})
+                }).then((node) => {
+                    return node.click()
+                }).then(() => {
+                    return driver.delay(200);
+                }).then(() => {
+                    return driver.screenshot('first-google-search.png');
+                }).then(() => {
+
+                    client.close();
+                    done();
+                }).catch((err) => {
+
+                    client.close();
+                    done(err);
+                });
+            });
+        });
+
     });
 });
