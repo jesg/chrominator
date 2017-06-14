@@ -140,14 +140,16 @@ describe('core api', function() {
                     n = node
                     return n.sendKeys('abc');
                 }).then(() => {
-                    // TODO we should spin the browser event loop
-                    return driver.delay(200);
+                    return driver.spinBrowserEventLoop();
                 }).then(() => {
-                    return driver.querySelector({selector: 'button[value="Search"]'})
+                    return driver.querySelector({selector: 'input[value="Google Search"]'})
                 }).then((node) => {
-                    return node.click()
+                    n = node;
+                    return n.click()
                 }).then(() => {
-                    return driver.delay(200);
+                    return driver.spinBrowserEventLoop();
+                }).then(() => {
+                    return driver.delay(1000);
                 }).then(() => {
                     return driver.screenshot('first-google-search.png');
                 }).then(() => {
