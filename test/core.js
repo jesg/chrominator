@@ -5,9 +5,23 @@ const Driver = require('./../index').Driver;
 const CDP = require('chrome-remote-interface');
 const fs = require('fs');
 const expect = require('chai').expect
+const createMockServer = require('./../fixtures/server')
 
 describe('core api', function() {
-    const baseHtml = fs.readFileSync(__dirname + '/../fixtures/base.html', 'utf-8');
+    const baseHtml = fs.readFileSync(__dirname + '/../fixtures/static/base.html', 'utf-8');
+    const baseUrl = 'http://127.0.0.1:8080';
+    var mockServer;
+
+    before(function(done) {
+        mockServer = createMockServer(8080, function() {
+            console.log('start mock server');
+            done();
+        });
+    });
+
+    after(function() {
+        mockServer.close();
+    });
 
     describe('query', function() {
         it('can query elements', function(done) {
@@ -126,34 +140,47 @@ describe('core api', function() {
             });
         });
 
-
-        it('can search google.com', function(done) {
+        it('can click an element', function(done) {
             CDP((client) => {
                 var driver;
-                var n;
                 Driver.createDriver(client).then((result) => {
                     driver = result;
-                    return driver.navigate({url: 'https://www.google.com'});
+                    return driver.navigate({url: baseUrl + '/clickable.html'});
                 }).then(() => {
-                    return driver.querySelector({selector: 'input[name="q"]'})
+                    return driver.querySelector({selector: 'div#inner'})
                 }).then((node) => {
-                    n = node
-                    return n.sendKeys('abc');
+                    return node.click();
                 }).then(() => {
-                    return driver.spinBrowserEventLoop();
+                    return driver.querySelector({selector: 'div#innerClick'})
                 }).then(() => {
-                    return driver.querySelector({selector: 'input[value="Google Search"]'})
-                }).then((node) => {
-                    n = node;
-                    return n.click()
-                }).then(() => {
-                    return driver.spinBrowserEventLoop();
-                }).then(() => {
-                    return driver.delay(1000);
-                }).then(() => {
-                    return driver.screenshot('first-google-search.png');
-                }).then(() => {
+                    client.close();
+                    done();
+                }).catch((err) => {
 
+                    client.close();
+                    done(err);
+                });
+            });
+        });
+
+        it('can send keys to an element', function(done) {
+            var inputElem;
+            var name = 'naru';
+            CDP((client) => {
+                var driver;
+                Driver.createDriver(client).then((result) => {
+                    driver = result;
+                    return driver.navigate({url: baseUrl + '/input.html'});
+                }).then(() => {
+                    return driver.querySelector({selector: 'input#name'})
+                }).then((node) => {
+                    inputElem = node;
+                    return inputElem.sendKeys(name);
+                }).then((node) => {
+                    return inputElem.getProperty('value');
+                }).then((value) => {
+                    expect(value).to.equal(name);
+                }).then(() => {
                     client.close();
                     done();
                 }).catch((err) => {

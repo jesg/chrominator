@@ -1,0 +1,32 @@
+{
+  "name": "chrominator",
+  "version": "0.0.1",
+  "description": "High Level automation framework for chrome",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesg/chrominator.git"
+  },
+  "keywords": [
+    "chrome",
+    "headless"
+  ],
+  "author": "Jason Gowan",
+  "license": "MIT",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/"
+  ],
+  "devDependencies": {
+    "mocha": ">3.4.2",
+    "node-simple-router": ">=0.10.1",
+    "chai": ">4.0.2"
+  },
+  "dependencies": {
+    "chrome-remote-interface": ">0.23.2"
+  },
+  "bugs": {
+    "url": "https://github.com/jesg/chrominator/issues"
+  },
+  "homepage": "https://github.com/jesg/chrominator#readme"
+}

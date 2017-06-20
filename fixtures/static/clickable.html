@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script>
+			function addChild(node, id) {
+				var newNode = document.createElement('div');
+				newNode.id = id;
+				newNode.innerHTML = id;
+				node.appendChild(newNode);
+			}
+    </script>
+  </head>
+  <body>
+    <div id="outer" class="outer">
+      <div id="inner" onclick="addChild(this, 'innerClick')" class="inner">inner
+      </div>
+      <div>hi</div>
+    </div>
+  </body>
+</html>
