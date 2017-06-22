@@ -4,6 +4,8 @@ matrix:
     - node_js: "node"
     - node_js: "6"
 sudo: false
+env:
+  - LIGHTHOUSE_CHROMIUM_PATH=/chrome/opt/google/chrome-beta/chrome
 cache:
   directories:
     - node_modules
@@ -25,5 +27,4 @@ before_script:
     fi
   # dump the current versions
   - chrome/opt/google/chrome-beta/chrome --version
-  - export LIGHTHOUSE_CHROMIUM_PATH=/chrome/opt/google/chrome-beta/chrome
   - npm list
