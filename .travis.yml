@@ -5,7 +5,7 @@ matrix:
     - node_js: "6"
 sudo: false
 env:
-  - LIGHTHOUSE_CHROMIUM_PATH=/chrome/opt/google/chrome-beta/chrome
+  - LIGHTHOUSE_CHROMIUM_PATH=chrome/opt/google/chrome-beta/chrome
 cache:
   directories:
     - node_modules
