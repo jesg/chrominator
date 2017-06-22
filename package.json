@@ -23,9 +23,9 @@
     "lib/"
   ],
   "devDependencies": {
-    "mocha": ">3.4.2",
+    "mocha": ">=3.4.2",
     "node-simple-router": ">=0.10.1",
-    "chai": ">4.0.2"
+    "chai": ">=4.0.2"
   },
   "dependencies": {
     "lighthouse": ">=2.1.0",
