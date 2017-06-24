@@ -147,4 +147,44 @@ describe('core api', function() {
             done(err);
         });
     });
+
+    it('evaluate can return number', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluateString('1;');
+        }).then((result) => {
+            expect(result).to.equal(1);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('evaluate can return string', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluateString('"foo";');
+        }).then((result) => {
+            expect(result).to.equal('foo');
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('evaluate can return null', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluateString('null;');
+        }).then((result) => {
+            expect(result).to.equal(null);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
 });
