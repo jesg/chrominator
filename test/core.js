@@ -150,7 +150,7 @@ describe('core api', function() {
 
     it('evaluate can return number', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
-            return driver.evaluateString('1;');
+            return driver.evaluate(function() { return 1; });
         }).then((result) => {
             expect(result).to.equal(1);
         }).then(() => {
@@ -163,7 +163,7 @@ describe('core api', function() {
 
     it('evaluate can return string', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
-            return driver.evaluateString('"foo";');
+            return driver.evaluate(function() { return "foo"; });
         }).then((result) => {
             expect(result).to.equal('foo');
         }).then(() => {
@@ -176,7 +176,7 @@ describe('core api', function() {
 
     it('evaluate can return null', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
-            return driver.evaluateString('null;');
+            return driver.evaluate('return null;');
         }).then((result) => {
             expect(result).to.equal(null);
         }).then(() => {
