@@ -130,7 +130,7 @@ describe('core api', function() {
 
     it('can send keys to an element', function(done) {
         var inputElem;
-        var name = 'naru';
+        var name = 'Naru 1 💩';
         driver.navigate({url: baseUrl + '/input.html'}).then(() => {
             return driver.querySelector({selector: 'input#name'})
         }).then((node) => {
