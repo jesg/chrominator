@@ -150,7 +150,7 @@ describe('core api', function() {
 
     it('evaluate can return number', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
-            return driver.evaluate(function() { return 1; });
+            return driver.evaluate({functionDeclaration: function() { return 1; }});
         }).then((result) => {
             expect(result).to.equal(1);
         }).then(() => {
@@ -163,7 +163,7 @@ describe('core api', function() {
 
     it('evaluate can return string', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
-            return driver.evaluate(function() { return "foo"; });
+            return driver.evaluate({functionDeclaration: function() { return "foo"; }});
         }).then((result) => {
             expect(result).to.equal('foo');
         }).then(() => {
@@ -176,9 +176,36 @@ describe('core api', function() {
 
     it('evaluate can return null', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
-            return driver.evaluate('return null;');
+            return driver.evaluate({functionDeclaration: 'return null;'});
         }).then((result) => {
             expect(result).to.equal(null);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('evaluate can handle function with numeric argument', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function(name) { return name; }, args: [1]});
+        }).then((result) => {
+            expect(result).to.equal(1);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('evaluate can handle function with string argument', function(done) {
+        const name = 'jesg';
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function(name) { return name; }, args: [name]});
+        }).then((result) => {
+            expect(result).to.equal(name);
         }).then(() => {
             done();
         }).catch((err) => {
