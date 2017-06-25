@@ -214,4 +214,30 @@ describe('core api', function() {
         });
     });
 
+    it('evaluateAsync can resolve primitive', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluateAsync({functionDeclaration: function() {  resolve(1); }});
+        }).then((result) => {
+            expect(result).to.equal(1);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('evaluateAsync can resolve setTimeout', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluateAsync({functionDeclaration: function() {  setTimeout(function() { resolve(1); }, 10) }});
+        }).then((result) => {
+            expect(result).to.equal(1);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
 });
