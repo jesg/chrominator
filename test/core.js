@@ -240,4 +240,34 @@ describe('core api', function() {
         });
     });
 
+    it('node evaluate can get class attribute', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.querySelector({selector: 'div#inner'})
+        }).then((node) => {
+            return node.evaluate({functionDeclaration: function() { return this.getAttribute('class'); }});
+        }).then((result) => {
+            expect(result).to.equal('inner');
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('node evaluateAsync can resolve setTimeout', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.querySelector({selector: 'div#inner'})
+        }).then((node) => {
+            return node.evaluateAsync({functionDeclaration: function() {  setTimeout(function() { resolve(1); }, 10) }});
+        }).then((result) => {
+            expect(result).to.equal(1);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
 });
