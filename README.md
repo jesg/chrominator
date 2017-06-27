@@ -1,3 +1,5 @@
+[![npm version](https://img.shields.io/npm/v/chrominator.svg?style=flat-square)](https://www.npmjs.com/package/chrominator)
+
 [![Build Status](https://travis-ci.org/jesg/chrominator.svg?branch=master)](https://travis-ci.org/jesg/chrominator)
 
 a high level api to chrome debugger for automation.
