@@ -2,6 +2,7 @@
 
 const Driver = require('./lib/core').Driver;
 const ChromeService = require('./lib/chrome_service').ChromeService;
+const debug = require('debug')('chrominator');
 
 
 module.exports = function(options, callback) {

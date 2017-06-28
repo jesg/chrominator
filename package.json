@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "lighthouse": ">=2.1.0",
+    "debug": ">=2.6.8",
     "chrome-remote-interface": ">=0.23.2"
   },
   "bugs": {
