@@ -10,9 +10,9 @@
     "chrome",
     "headless"
   ],
-	"engines": {
-		"node": ">=6"
-	},
+  "engines": {
+    "node": ">=6"
+  },
   "author": "Jason Gowan",
   "license": "MIT",
   "files": [
@@ -37,7 +37,7 @@
     "url": "https://github.com/jesg/chrominator/issues"
   },
   "homepage": "https://github.com/jesg/chrominator#readme",
-	"scripts": {
-		"test": "./node_modules/.bin/mocha"
-	}
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  }
 }
