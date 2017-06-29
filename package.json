@@ -23,6 +23,7 @@
     "lib/"
   ],
   "devDependencies": {
+    "jsdoc": ">=3.4.3",
     "mocha": ">=3.4.2",
     "node-simple-router": ">=0.10.1",
     "chai": ">=4.0.2"
