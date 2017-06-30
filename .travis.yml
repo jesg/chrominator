@@ -3,28 +3,20 @@ matrix:
   include:
     - node_js: "node"
     - node_js: "6"
+dist: trusty
 sudo: false
-env:
-  - LIGHTHOUSE_CHROMIUM_PATH=chrome/opt/google/chrome-beta/chrome
 cache:
   directories:
     - node_modules
     - chrome
-addons: # needed to run Chrome beta
+addons: # needed to run Chrome stable
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - libstdc++-4.9-dev
 before_script:
-  # fetch and extract Chrome if not cached
-  - if [ ! -x chrome/opt/google/chrome/chrome ]; then
-        wget https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb &&
-        dpkg -x google-chrome-beta_current_amd64.deb chrome &&
-        rm -f google-chrome-beta_current_amd64.deb
-    else
-        echo 'Using cached Google Chrome';
-    fi
-  # dump the current versions
-  - chrome/opt/google/chrome-beta/chrome --version
+  - google-chrome --version
   - npm list
+addons:
+  chrome: stable
