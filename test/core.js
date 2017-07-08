@@ -305,4 +305,42 @@ describe('core api', function() {
         });
     });
 
+    it('node can equal itself', function(done) {
+        let firstNode;
+        driver.navigate({url: baseUrl + '/base.html'}).then(() => {
+            return driver.querySelector({selector: 'div#outer'})
+        }).then((result) => {
+            firstNode = result;
+            return driver.querySelector({selector: 'div#outer'})
+        }).then((result) => {
+            return firstNode.equal(result)
+        }).then((result) => {
+            expect(result).to.be.true;
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('node does not equal another node', function(done) {
+        let firstNode;
+        driver.navigate({url: baseUrl + '/base.html'}).then(() => {
+            return driver.querySelector({selector: 'div#outer'})
+        }).then((result) => {
+            firstNode = result;
+            return driver.querySelector({selector: 'div#inner'})
+        }).then((result) => {
+            return firstNode.equal(result)
+        }).then((result) => {
+            expect(result).to.be.false;
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
 });
