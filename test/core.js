@@ -10,26 +10,19 @@ const createMockServer = require('./../fixtures/server')
 
 describe('core api', function() {
     const baseHtml = fs.readFileSync(__dirname + '/../fixtures/static/base.html', 'utf-8');
-    const baseUrl = 'http://127.0.0.1:8080';
-    var mockServer;
+    const baseUrl = process.env.CHROMINATOR_MOCK_SERVER_BASE_URL;
     var driver;
     var service;
 
     before(function(done) {
-        mockServer = createMockServer(8080, function() {
-            console.log('start mock server');
-
-            service = new ChromeService();
-            service.start().then((result) => {
-                driver = result;
-                done();
-            });
+        service = new ChromeService();
+        service.start().then((result) => {
+            driver = result;
+            done();
         });
     });
 
     after(function() {
-        console.log('stop mock server');
-        mockServer.close();
         service.stop();
     });
 

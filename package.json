@@ -38,6 +38,6 @@
   },
   "homepage": "https://github.com/jesg/chrominator#readme",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./scripts/run-tests.sh"
   }
 }
