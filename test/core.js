@@ -255,6 +255,21 @@ describe('core api', function() {
         });
     });
 
+    it('node arg evaluate can get class attribute', function(done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.querySelector({selector: 'div#inner'})
+        }).then((node) => {
+            return driver.evaluate({functionDeclaration: function(node) { return node.getAttribute('class'); }, args: [node]});
+        }).then((result) => {
+            expect(result).to.equal('inner');
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
     it('node evaluateAsync can resolve setTimeout', function(done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
             return driver.querySelector({selector: 'div#inner'})
