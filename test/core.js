@@ -285,4 +285,24 @@ describe('core api', function() {
         });
     });
 
+    it('node can set value property', function(done) {
+        let node;
+        const name = 'jesg';
+        driver.navigate({url: baseUrl + '/input.html'}).then(() => {
+            return driver.querySelector({selector: 'input#name'})
+        }).then((result) => {
+            node = result;
+            return node.setProperty('value', name)
+        }).then(() => {
+            return node.getProperty('value')
+        }).then((result) => {
+            expect(result).to.equal(name);
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
 });
