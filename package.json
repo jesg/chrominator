@@ -23,10 +23,10 @@
     "lib/"
   ],
   "devDependencies": {
-    "jsdoc": ">=3.4.3",
+    "chai": ">=4.0.2",
+    "documentation": "^4.0.0-rc.1",
     "mocha": ">=3.4.2",
-    "node-simple-router": ">=0.10.1",
-    "chai": ">=4.0.2"
+    "node-simple-router": ">=0.10.1"
   },
   "dependencies": {
     "lighthouse": ">=2.1.0",
