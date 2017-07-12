@@ -2,4 +2,4 @@
 
 rm -rf docs
 
-./node_modules/.bin/jsdoc --destination docs -r lib
+./node_modules/.bin/documentation build lib/** -f html -o docs
