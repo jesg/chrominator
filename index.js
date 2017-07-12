@@ -1,6 +1,7 @@
 'use strict';
 
 const Driver = require('./lib/core').Driver;
+const ExpectedConditions = require('./lib/core').ExpectedConditions;
 const ChromeService = require('./lib/chrome_service').ChromeService;
 const debug = require('debug')('chrominator');
 
@@ -26,3 +27,4 @@ module.exports = function(options, callback) {
 
 module.exports.Driver = Driver;
 module.exports.ChromeService = ChromeService;
+module.exports.ExpectedConditions = ExpectedConditions;

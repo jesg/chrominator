@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const Driver = require('./../index').Driver;
+const ExpectedConditions = require('./../index').ExpectedConditions;
 const ChromeService = require('./../index').ChromeService;
 const CDP = require('chrome-remote-interface');
 const fs = require('fs');
@@ -328,6 +329,25 @@ describe('core api', function() {
             return firstNode.equal(result)
         }).then((result) => {
             expect(result).to.be.false;
+        }).then(() => {
+            done();
+        }).catch((err) => {
+
+            done(err);
+        });
+    });
+
+    it('can search google', function(done) {
+        // TODO refactor to use the mock server
+        let firstNode;
+        driver.navigate({url: 'https://google.com'}).then(() => {
+            return driver.querySelector({selector: 'input[name="q"]'})
+        }).then((node) => {
+            return node.sendKeys('yellow')
+        }).then((result) => {
+            return driver.until(ExpectedConditions.is_node_present({selector: 'button[value="Search"]'}))
+        }).then((node) => {
+            return node.click()
         }).then(() => {
             done();
         }).catch((err) => {
