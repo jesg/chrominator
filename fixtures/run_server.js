@@ -1,3 +1,3 @@
-'use strict';
+'use strict'
 
-require('./server')(8080);
+require('./server')(8080)
