@@ -79,6 +79,12 @@ Returns **[Node](#node)**
 
 Reload the current page
 
+**Examples**
+
+```javascript
+driver.reload()
+```
+
 ### pdf
 
 Print the current page to pdf.
@@ -87,6 +93,12 @@ Print the current page to pdf.
 
 -   `path` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** file path
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** pdf options
+
+**Examples**
+
+```javascript
+driver.pdf('/opt/save.pdf', {})
+```
 
 ### screenshot
 
@@ -149,6 +161,12 @@ Set the page content
 
 -   `html`  
 
+**Examples**
+
+```javascript
+driver.setContent('<div>hello</div>')
+```
+
 ### delay
 
 Async delay.
@@ -156,6 +174,12 @@ Async delay.
 **Parameters**
 
 -   `ms` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of milliseconds
+
+**Examples**
+
+```javascript
+await driver.delay(500)
+```
 
 ### evaluate
 
@@ -212,6 +236,12 @@ Create and initialize the driver.
 
 -   `crd` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** an instance of chrome remote debugger
 
+**Examples**
+
+```javascript
+Driver.createDriver(crd)
+```
+
 ## Node
 
 **Parameters**
@@ -223,6 +253,12 @@ Create and initialize the driver.
 
 Get the Node's attributes.
 
+**Examples**
+
+```javascript
+attributes = await node.getAttributes()
+```
+
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The attributes as key-value pairs.
 
 ### getAttribute
@@ -232,6 +268,12 @@ Get an attribute on the node.
 **Parameters**
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** attribute name
+
+**Examples**
+
+```javascript
+value = await node.getAttribute('class')
+```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | null)** attribute value or null if the attribute does not exist
 
@@ -243,6 +285,12 @@ Search for a descendent of the current Node.
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
 
+**Examples**
+
+```javascript
+node = await node.querySelector({selector: '#my-id'})
+```
+
 Returns **[Node](#node)** 
 
 ### querySelectorAll
@@ -252,6 +300,12 @@ Search for descendents of the current Node.
 **Parameters**
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+
+**Examples**
+
+```javascript
+nodes = await node.querySelectorAll({selector: 'a'})
+```
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](#node)>** 
 
@@ -263,9 +317,21 @@ Set file selection on a file input element.
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
+**Examples**
+
+```javascript
+node.setFileInput({files: ['/opt/my-file.txt']})
+```
+
 ### focus
 
 Focus on the Node
+
+**Examples**
+
+```javascript
+node.focus()
+```
 
 ### clickableAt
 
@@ -292,6 +358,12 @@ Click on the Node.
 -   `args`  
 -   `Object`  
 
+**Examples**
+
+```javascript
+node.click()
+```
+
 ### hover
 
 Hover on the Node.
@@ -301,6 +373,12 @@ Hover on the Node.
 -   `args`  
 -   `Object`  
 
+**Examples**
+
+```javascript
+node.hover()
+```
+
 ### sendKeys
 
 Type text to the Node
@@ -308,6 +386,12 @@ Type text to the Node
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** text to type into the node
+
+**Examples**
+
+```javascript
+node.sendKeys('jesg')
+```
 
 ### setProperty
 
@@ -318,6 +402,12 @@ Set a property on the Node
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties name
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties value
 
+**Examples**
+
+```javascript
+node.setProperty('value', 'jesg')
+```
+
 ### getProperty
 
 Get a property on the Node
@@ -326,11 +416,23 @@ Get a property on the Node
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties name
 
+**Examples**
+
+```javascript
+value = await node.getProperty('value')
+```
+
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties value
 
 ### getProperties
 
 Get the Node's properties
+
+**Examples**
+
+```javascript
+properties = await node.getProperties()
+```
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** properties as key-value pairs
 
@@ -390,6 +492,12 @@ Abstract DOM Element
 
 Get the Node's attributes.
 
+**Examples**
+
+```javascript
+attributes = await node.getAttributes()
+```
+
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The attributes as key-value pairs.
 
 ### getAttribute
@@ -399,6 +507,12 @@ Get an attribute on the node.
 **Parameters**
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** attribute name
+
+**Examples**
+
+```javascript
+value = await node.getAttribute('class')
+```
 
 Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | null)** attribute value or null if the attribute does not exist
 
@@ -410,6 +524,12 @@ Search for a descendent of the current Node.
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
 
+**Examples**
+
+```javascript
+node = await node.querySelector({selector: '#my-id'})
+```
+
 Returns **[Node](#node)** 
 
 ### querySelectorAll
@@ -419,6 +539,12 @@ Search for descendents of the current Node.
 **Parameters**
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+
+**Examples**
+
+```javascript
+nodes = await node.querySelectorAll({selector: 'a'})
+```
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](#node)>** 
 
@@ -430,9 +556,21 @@ Set file selection on a file input element.
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
+**Examples**
+
+```javascript
+node.setFileInput({files: ['/opt/my-file.txt']})
+```
+
 ### focus
 
 Focus on the Node
+
+**Examples**
+
+```javascript
+node.focus()
+```
 
 ### clickableAt
 
@@ -459,6 +597,12 @@ Click on the Node.
 -   `args`  
 -   `Object`  
 
+**Examples**
+
+```javascript
+node.click()
+```
+
 ### hover
 
 Hover on the Node.
@@ -468,6 +612,12 @@ Hover on the Node.
 -   `args`  
 -   `Object`  
 
+**Examples**
+
+```javascript
+node.hover()
+```
+
 ### sendKeys
 
 Type text to the Node
@@ -475,6 +625,12 @@ Type text to the Node
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** text to type into the node
+
+**Examples**
+
+```javascript
+node.sendKeys('jesg')
+```
 
 ### setProperty
 
@@ -485,6 +641,12 @@ Set a property on the Node
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties name
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties value
 
+**Examples**
+
+```javascript
+node.setProperty('value', 'jesg')
+```
+
 ### getProperty
 
 Get a property on the Node
@@ -493,11 +655,23 @@ Get a property on the Node
 
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties name
 
+**Examples**
+
+```javascript
+value = await node.getProperty('value')
+```
+
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** properties value
 
 ### getProperties
 
 Get the Node's properties
+
+**Examples**
+
+```javascript
+properties = await node.getProperties()
+```
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** properties as key-value pairs
 
