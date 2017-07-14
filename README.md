@@ -91,13 +91,12 @@ Print the current page to pdf.
 
 **Parameters**
 
--   `path` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** file path
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** pdf options
 
 **Examples**
 
 ```javascript
-driver.pdf('/opt/save.pdf', {})
+driver.pdf({path: '/opt/save.pdf'})
 ```
 
 ### screenshot
