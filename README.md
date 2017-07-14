@@ -17,7 +17,7 @@ Chrominator(async (driver) => {
     const searchButton = await driver.until(ExpectedConditions.is_node_present({selector: 'button[value="Search"]'}))
     await searchButton.click();
     await driver.delay(1000);
-    await driver.screenshot('screenshot.png', {format: 'png'});
+    await driver.screenshot({path: 'screenshot.png'})
 });
 ```
 
@@ -106,13 +106,12 @@ Take a screenshot.
 
 **Parameters**
 
--   `path` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** file path
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** image options
 
 **Examples**
 
 ```javascript
-driver.screenshot('screenshot.png', {format: 'png'});
+driver.screenshot({path: 'screenshot.png'});
 ```
 
 ### setUserAgent
