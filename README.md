@@ -49,12 +49,13 @@ Search for a Node in the current document
 
 **Parameters**
 
--   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+-   `args` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** selector arguments or selector
 
 **Examples**
 
 ```javascript
 node = await driver.querySelector({selector: '#my-id'})
+node = await driver.querySelector('#my-id')
 ```
 
 Returns **[Node](#node)** 
@@ -65,12 +66,13 @@ Search for Nodes in the current document
 
 **Parameters**
 
--   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+-   `args` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** selector arguments or selector
 
 **Examples**
 
 ```javascript
 nodes = await driver.querySelectorAll({selector: 'a'})
+nodes = await driver.querySelectorAll('a')
 ```
 
 Returns **[Node](#node)** 
@@ -281,12 +283,13 @@ Search for a descendent of the current Node.
 
 **Parameters**
 
--   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+-   `args` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** selector arguments or selector
 
 **Examples**
 
 ```javascript
 node = await node.querySelector({selector: '#my-id'})
+node = await node.querySelector('#my-id')
 ```
 
 Returns **[Node](#node)** 
@@ -297,12 +300,13 @@ Search for descendents of the current Node.
 
 **Parameters**
 
--   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+-   `args` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** selector arguments or selector
 
 **Examples**
 
 ```javascript
 nodes = await node.querySelectorAll({selector: 'a'})
+nodes = await node.querySelectorAll('a')
 ```
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](#node)>** 
@@ -520,12 +524,13 @@ Search for a descendent of the current Node.
 
 **Parameters**
 
--   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+-   `args` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** selector arguments or selector
 
 **Examples**
 
 ```javascript
 node = await node.querySelector({selector: '#my-id'})
+node = await node.querySelector('#my-id')
 ```
 
 Returns **[Node](#node)** 
@@ -536,12 +541,13 @@ Search for descendents of the current Node.
 
 **Parameters**
 
--   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** selector arguments
+-   `args` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** selector arguments or selector
 
 **Examples**
 
 ```javascript
 nodes = await node.querySelectorAll({selector: 'a'})
+nodes = await node.querySelectorAll('a')
 ```
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Node](#node)>** 
