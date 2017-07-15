@@ -103,16 +103,23 @@ driver.pdf({path: '/opt/save.pdf'})
 
 ### screenshot
 
-Take a screenshot.
+Take a screenshot
 
 **Parameters**
 
--   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** image options
+-   `options` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** image options
 
 **Examples**
 
 ```javascript
+// writes image to file
 driver.screenshot({path: 'screenshot.png'});
+
+// writes image to file
+driver.screenshot('screenshot.png');
+
+// returns base64 encoding.
+driver.screenshot();
 ```
 
 ### setUserAgent
