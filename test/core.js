@@ -318,7 +318,6 @@ describe('core api', function () {
   })
 
   it('can search google', function (done) {
-        // TODO refactor to use the mock server
     let firstNode
     driver.navigate({url: 'https://google.com'}).then(() => {
       return driver.querySelector({selector: 'input[name="q"]'})
