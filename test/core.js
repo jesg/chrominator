@@ -334,4 +334,19 @@ describe('core api', function () {
       done(err)
     })
   })
+
+  it('can get visible text', function (done) {
+    let firstNode
+    driver.navigate({url: baseUrl + '/base.html'}).then(() => {
+      return driver.querySelector('#greeting')
+    }).then((node) => {
+      return node.text()
+    }).then((result) => {
+      expect(result).to.equal('hi')
+    }).then(() => {
+      done()
+    }).catch((err) => {
+      done(err)
+    })
+  })
 })
