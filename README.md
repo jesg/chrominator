@@ -14,7 +14,7 @@ Chrominator(async (driver) => {
     await driver.navigate({url: 'https://www.google.com'})
     const search = await driver.querySelector({selector: 'input[name="q"]'})
     await search.sendKeys('yellow');
-    const searchButton = await driver.until(ExpectedConditions.is_node_present({selector: 'button[value="Search"]'}))
+    const searchButton = await driver.waitForNodePresent('button[value="Search"]')
     await searchButton.click();
     await driver.delay(1000);
     await driver.screenshot({path: 'screenshot.png'})
