@@ -108,7 +108,7 @@ describe('core api', function () {
     }).then((node) => {
       return node.click()
     }).then(() => {
-      return driver.querySelector({selector: 'div#innerClick'})
+      return driver.querySelector({selector: 'div#inner'})
     }).then(() => {
       done()
     }).catch((err) => {
