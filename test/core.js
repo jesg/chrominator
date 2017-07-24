@@ -330,6 +330,8 @@ describe('core api', function () {
     }).then((node) => {
       return node.click()
     }).then(() => {
+        return driver.waitForTitle('yellow - Google Search')
+    }).then(() => {
       done()
     }).catch((err) => {
       done(err)
