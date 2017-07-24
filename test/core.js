@@ -23,8 +23,10 @@ describe('core api', function () {
     })
   })
 
-  after(function () {
-    service.stop()
+  after(function (done) {
+    service.stop().then(() => {
+        done()
+    })
   })
 
   describe('query', function () {
