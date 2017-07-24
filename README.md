@@ -42,6 +42,18 @@ Navigate to a page and wait for the page to load.
 driver.navigate({url: 'http://google.com', pageLoadStrategy: 'interactive'})
 ```
 
+### title
+
+Get the title of the current page
+
+**Examples**
+
+```javascript
+title = await driver.title()
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
 ### querySelector
 
 Search for a Node in the current document
@@ -316,6 +328,20 @@ node = await driver.waitForNodeNotClickable('button[value="Search"]')
 ```
 
 Returns **[Node](#node)** 
+
+### waitForTitle
+
+Wait for title
+
+**Parameters**
+
+-   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** page title
+
+**Examples**
+
+```javascript
+await driver.waitForTitle('Google')
+```
 
 ### createDriver
 
@@ -907,6 +933,21 @@ Tests if a Node is clickable.
 ```javascript
 // returns Node
 driver.until(ExpectedConditions.isNodeClickable({selector: 'button[value="Search"]'}))
+```
+
+### titleIs
+
+Tests the page title
+
+**Parameters**
+
+-   `desiredTitle`  
+
+**Examples**
+
+```javascript
+// returns Node
+driver.until(ExpectedConditions.titleIs('Google'))
 ```
 
 # License
