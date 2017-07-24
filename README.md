@@ -8,7 +8,6 @@ currently working on core api built on promises.  might provide a high level flu
 
 ```javascript
 const Chrominator = require('chrominator');
-const ExpectedConditions = Chrominator.ExpectedConditions;
 
 Chrominator(async (driver) => {
     await driver.navigate({url: 'https://www.google.com'})
