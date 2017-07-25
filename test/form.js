@@ -45,4 +45,17 @@ describe('form handling', function () {
       })
   })
 
+  it('click on unclickable element does nothing', function (done) {
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector({selector: 'body'})
+      }).then((node) => {
+          return node.click()
+      }).then(() => {
+          return driver.waitForTitle('Form Page')
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
