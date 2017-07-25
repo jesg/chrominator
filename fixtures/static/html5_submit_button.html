@@ -1,0 +1,15 @@
+<html>
+  <head>
+		<title>Form Page</title>
+  </head>
+	<body>
+		<form method="get" action="result.html" name="login">
+			<input type="text" name="name" id="name"/>
+			<button id="internal_explicit_submit" type="submit">Explicit Submit</button>
+			<button id="internal_implicit_submit" >Implicit Submit</button>
+			<button type="submit"><span id="internal_span_submit">Span Submit</span></button>
+		</form>
+		<button id="external_explicit_submit" type="submit" form="login">Explicit Submit</button>
+		<button id="external_implicit_submit" form="login">Implicit Submit</button>
+	</body>
+</html>
