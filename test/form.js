@@ -124,4 +124,29 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  it('enter data in form fields', function (done) {
+      let node
+      const title = 'conan the barbarian'
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector('#movie')
+      }).then((result) => {
+          node = result
+          return node.getProperty('value')
+      }).then((value) => {
+          expect(value).to.equal(title)
+          // TODO support Node.clear
+          return node.setProperty('value', '')
+      }).then(() => {
+          return node.sendKeys('some text')
+      }).then(() => {
+          return node.getProperty('value')
+      }).then((value) => {
+          expect(value).to.equal('some text')
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
