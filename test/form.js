@@ -91,4 +91,23 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  it('enter upper case text in text area', function (done) {
+      let node
+      const title = 'Conan The BarBarian'
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector('#comment')
+      }).then((result) => {
+          node = result
+          return node.sendKeys(title)
+      }).then(() => {
+          return node.getProperty('value')
+      }).then((value) => {
+          expect(value).to.equal(title)
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
