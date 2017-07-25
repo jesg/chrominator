@@ -212,4 +212,8 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  xit('handle form with javascript action', function (done) {
+      // TODO support alerts
+  })
 })
