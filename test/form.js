@@ -191,4 +191,25 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  it('append text in text area', function (done) {
+      let node
+      const title = 'conan the barbarian'
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector('#comment')
+      }).then((result) => {
+          node = result
+          return node.sendKeys('conan ')
+      }).then(() => {
+          return node.sendKeys('the barbarian')
+      }).then(() => {
+          return node.getProperty('value')
+      }).then((value) => {
+          expect(title).to.equal(value)
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
