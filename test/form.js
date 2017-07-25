@@ -257,4 +257,8 @@ describe('form handling', function () {
   it('click on internal implicit submit button', function (done) {
       clickOnSubmit('#internal_implicit_submit', done)
   })
+
+  it('click on internal span submit button', function (done) {
+      clickOnSubmit('#internal_span_submit', done)
+  })
 })
