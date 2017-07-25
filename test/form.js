@@ -58,4 +58,18 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  it('click on image button', function (done) {
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector({selector: '#imageButton'})
+      }).then((node) => {
+          return node.click()
+      }).then(() => {
+          return driver.waitForTitle('Result Page')
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
