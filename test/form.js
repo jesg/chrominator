@@ -216,4 +216,29 @@ describe('form handling', function () {
   xit('handle form with javascript action', function (done) {
       // TODO support alerts
   })
+
+  it('click on submit button', function (done) {
+      let node
+      const name = 'arnold'
+      driver.navigate({url: baseUrl + '/html5_submit_button.html'}).then(() => {
+          return driver.querySelector('#name')
+      }).then((result) => {
+          node = result
+          return node.sendKeys(name)
+      }).then(() => {
+          return driver.querySelector('#internal_explicit_submit')
+      }).then((result) => {
+          return result.click()
+      }).then(() => {
+          return driver.waitForTitle('Result Page')
+      }).then(() => {
+          return driver.currentUrl()
+      }).then((value) => {
+          expect(value).to.contain('name='+name)
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
