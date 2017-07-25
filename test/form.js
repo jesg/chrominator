@@ -245,4 +245,8 @@ describe('form handling', function () {
   it('click on submit button', function (done) {
       clickOnSubmit('#internal_explicit_submit', done)
   })
+
+  xit('click on external explicit submit button', function (done) {
+      clickOnSubmit('#external_explicit_submit', done)
+  })
 })
