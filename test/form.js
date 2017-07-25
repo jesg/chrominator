@@ -149,4 +149,6 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  // TODO placeholder for file input elements
 })
