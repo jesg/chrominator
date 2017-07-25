@@ -110,4 +110,18 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  it('enter form with new line literal', function (done) {
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector('#name')
+      }).then((node) => {
+          return node.sendKeys('\n')
+      }).then(() => {
+          return driver.waitForTitle('Result Page')
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
