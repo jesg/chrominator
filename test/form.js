@@ -172,4 +172,23 @@ describe('form handling', function () {
           done(err)
       })
   })
+
+  xit('sendKeys appends text in inputs with existing value', function (done) {
+      let node
+      const title = 'conan the barbarian II'
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector('#movie')
+      }).then((result) => {
+          node = result
+          return node.sendKeys(' II')
+      }).then(() => {
+          return node.getProperty('value')
+      }).then((value) => {
+          expect(title).to.equal(value)
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
