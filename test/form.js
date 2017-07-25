@@ -253,4 +253,8 @@ describe('form handling', function () {
   xit('click on external implicit submit button', function (done) {
       clickOnSubmit('#external_implicit_submit', done)
   })
+
+  it('click on internal implicit submit button', function (done) {
+      clickOnSubmit('#internal_implicit_submit', done)
+  })
 })
