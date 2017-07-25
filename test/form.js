@@ -217,7 +217,7 @@ describe('form handling', function () {
       // TODO support alerts
   })
 
-  it('click on submit button', function (done) {
+  const clickOnSubmit = function(selector, done) {
       let node
       const name = 'arnold'
       driver.navigate({url: baseUrl + '/html5_submit_button.html'}).then(() => {
@@ -226,7 +226,7 @@ describe('form handling', function () {
           node = result
           return node.sendKeys(name)
       }).then(() => {
-          return driver.querySelector('#internal_explicit_submit')
+          return driver.querySelector(selector)
       }).then((result) => {
           return result.click()
       }).then(() => {
@@ -240,5 +240,9 @@ describe('form handling', function () {
       }).catch((err) => {
           done(err)
       })
+  }
+
+  it('click on submit button', function (done) {
+      clickOnSubmit('#internal_explicit_submit', done)
   })
 })
