@@ -151,4 +151,25 @@ describe('form handling', function () {
   })
 
   // TODO placeholder for file input elements
+
+  it('sendKeys appends text in inputs', function (done) {
+      let node
+      const title = 'conan the barbarian'
+      driver.navigate({url: baseUrl + '/form.html'}).then(() => {
+          return driver.querySelector('#name')
+      }).then((result) => {
+          node = result
+          return node.sendKeys('conan ')
+      }).then(() => {
+          return node.sendKeys('the barbarian')
+      }).then(() => {
+          return node.getProperty('value')
+      }).then((value) => {
+          expect(value).to.equal(title)
+      }).then(() => {
+          done()
+      }).catch((err) => {
+          done(err)
+      })
+  })
 })
