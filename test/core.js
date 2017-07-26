@@ -105,7 +105,7 @@ describe('core api', function () {
   })
 
   it('can click an element', function (done) {
-    driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+    driver.navigate(baseUrl + '/clickable.html').then(() => {
       return driver.querySelector({selector: 'div#inner'})
     }).then((node) => {
       return node.click()
