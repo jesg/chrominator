@@ -43,6 +43,18 @@ describe('evaluate api', function () {
         })
     })
 
+    it('evaluate can return boolean', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function () { return true }})
+        }).then((result) => {
+            expect(result).to.be.true
+        }).then(() => {
+            done()
+        }).catch((err) => {
+            done(err)
+        })
+    })
+
     it('evaluate can return string', function (done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
             return driver.evaluate({functionDeclaration: function () { return 'foo' }})
