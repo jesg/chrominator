@@ -209,5 +209,21 @@ describe('evaluate api', function () {
     xit('switch to frame and return document body', function(done) {
     })
 
+    it('create a persistent value', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function () { document.alerts = [] }})
+        }).then(() => {
+            return driver.evaluate({functionDeclaration: function () { document.alerts.push('hello') }})
+        }).then(() => {
+            return driver.evaluate({functionDeclaration: function () { return document.alerts.shift() }})
+        }).then((result) => {
+            expect(result).to.equal('hello')
+        }).then(() => {
+            done()
+        }).catch((err) => {
+            done(err)
+        })
+    })
+
 })
 
