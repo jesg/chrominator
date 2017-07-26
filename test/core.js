@@ -199,7 +199,7 @@ describe('core api', function () {
     }).then((node) => {
       return node.sendKeys('yellow')
     }).then((result) => {
-      return driver.until(ExpectedConditions.isNodePresent({selector: 'button[value="Search"]'}))
+      return driver.until(ExpectedConditions.isNodeClickable({selector: 'button[value="Search"]'}))
     }).then((node) => {
       return node.click()
     }).then(() => {
