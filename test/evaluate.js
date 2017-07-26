@@ -3,6 +3,7 @@
 
 const assert = require('assert')
 const Driver = require('./../index').Driver
+const Node = require('./../lib/core').Node
 const ExpectedConditions = require('./../index').ExpectedConditions
 const ChromeService = require('./../index').ChromeService
 const CDP = require('chrome-remote-interface')
@@ -218,6 +219,19 @@ describe('evaluate api', function () {
             return driver.evaluate({functionDeclaration: function () { return document.alerts.shift() }})
         }).then((result) => {
             expect(result).to.equal('hello')
+        }).then(() => {
+            done()
+        }).catch((err) => {
+            done(err)
+        })
+    })
+
+    it('can return document element', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function () { return document }})
+        }).then((result) => {
+            expect(result).to.not.be.null
+            expect(result).to.be.an.instanceof(Node)
         }).then(() => {
             done()
         }).catch((err) => {
