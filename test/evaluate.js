@@ -116,6 +116,19 @@ describe('evaluate api', function () {
         })
     })
 
+    it('evaluate can return date', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: 'return new Date();'})
+        }).then((result) => {
+            expect(result).to.be.an.instanceof(Date)
+            // TODO handle timezone properly ... nodejs is not parsing the tz properly
+        }).then(() => {
+            done()
+        }).catch((err) => {
+            done(err)
+        })
+    })
+
     it('evaluate can handle function with numeric argument', function (done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
             return driver.evaluate({functionDeclaration: function (name) { return name }, args: [1]})
