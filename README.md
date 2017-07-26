@@ -39,7 +39,9 @@ Navigate to a page and wait for the page to load.
 **Examples**
 
 ```javascript
-driver.navigate({url: 'http://google.com', pageLoadStrategy: 'interactive'})
+await driver.navigate({url: 'http://google.com', pageLoadStrategy: 'interactive'})
+// or
+await driver.navigate('http://google.com')
 ```
 
 ### title
@@ -238,6 +240,18 @@ The `functionDeclaration` must call either `resolve` to resolve the promise or `
 -   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** resolved object
+
+### currentUrl
+
+Get the url of the current page
+
+**Examples**
+
+```javascript
+url = await driver.currentUrl()
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the current url
 
 ### until
 
