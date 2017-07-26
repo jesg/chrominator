@@ -104,6 +104,18 @@ describe('evaluate api', function () {
         })
     })
 
+    it('evaluate can return undefined', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: 'return undefined;'})
+        }).then((result) => {
+            expect(result).to.be.undefined
+        }).then(() => {
+            done()
+        }).catch((err) => {
+            done(err)
+        })
+    })
+
     it('evaluate can handle function with numeric argument', function (done) {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
             return driver.evaluate({functionDeclaration: function (name) { return name }, args: [1]})
