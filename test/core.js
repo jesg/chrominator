@@ -197,11 +197,7 @@ describe('core api', function () {
     driver.navigate({url: 'https://google.com'}).then(() => {
       return driver.querySelector({selector: 'input[name="q"]'})
     }).then((node) => {
-      return node.sendKeys('yellow')
-    }).then((result) => {
-      return driver.until(ExpectedConditions.isNodeClickable({selector: 'button[value="Search"]'}))
-    }).then((node) => {
-      return node.click()
+      return node.sendKeys('yellow\n')
     }).then(() => {
         return driver.waitForTitle('yellow - Google Search')
     }).then(() => {
@@ -209,7 +205,7 @@ describe('core api', function () {
     }).catch((err) => {
       done(err)
     })
-  })
+  }).timeout(2000)
 
   it('can get visible text', function (done) {
     let firstNode
