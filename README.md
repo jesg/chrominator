@@ -10,13 +10,11 @@ currently working on core api built on promises.  might provide a high level flu
 const Chrominator = require('chrominator');
 
 Chrominator(async (driver) => {
-    await driver.navigate({url: 'https://www.google.com'})
-    const search = await driver.querySelector({selector: 'input[name="q"]'})
-    await search.sendKeys('yellow');
-    const searchButton = await driver.waitForNodePresent('button[value="Search"]')
-    await searchButton.click();
+    await driver.navigate('https://www.google.com')
+    const search = await driver.querySelector('input[name="q"]')
+    await search.sendKeys('yellow\n');
     await driver.delay(1000);
-    await driver.screenshot({path: 'screenshot.png'})
+    await driver.screenshot('screenshot.png')
 });
 ```
 
