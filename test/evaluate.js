@@ -115,6 +115,18 @@ describe('evaluate api', function () {
         })
     })
 
+    it('evaluate can handle function with boolean argument', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function (name) { return name }, args: [true]})
+        }).then((result) => {
+            expect(result).to.be.true
+        }).then(() => {
+            done()
+        }).catch((err) => {
+            done(err)
+        })
+    })
+
     it('evaluate can handle function with string argument', function (done) {
         const name = 'jesg'
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
