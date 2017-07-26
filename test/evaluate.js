@@ -264,5 +264,21 @@ describe('evaluate api', function () {
         })
     })
 
+    it('does not freez when exception is thrown', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluate({functionDeclaration: function () { throw new Error('bang!') }})
+        }).catch((err) => {
+            done()
+        })
+    })
+
+    it('eval async does not freez when exception is thrown', function (done) {
+        driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
+            return driver.evaluateAsync({functionDeclaration: function () { throw new Error('bang!') }})
+        }).catch((err) => {
+            done()
+        })
+    })
+
 })
 
