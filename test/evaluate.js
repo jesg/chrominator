@@ -96,7 +96,7 @@ describe('evaluate api', function () {
         driver.navigate({url: baseUrl + '/clickable.html'}).then(() => {
             return driver.evaluate({functionDeclaration: 'return null;'})
         }).then((result) => {
-            expect(result).to.equal(null)
+            expect(result).to.be.null
         }).then(() => {
             done()
         }).catch((err) => {
