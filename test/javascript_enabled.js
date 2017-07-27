@@ -163,4 +163,8 @@ describe('javascript enabled', function () {
   xit('body is the default focused element', function(done) {
       // TODO implement this api when we implement frame handling
   })
+
+  xit('change event is fired when focus is lost', function(done) {
+      // TODO implement this horrid test when i have more time
+  })
 })
