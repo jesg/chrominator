@@ -115,4 +115,23 @@ describe('javascript enabled', function () {
         done(err)
       })
   })
+
+  xit('submit form by clicking on submit button', function(done) {
+      let dynamo
+      driver.navigate(baseUrl + '/javascriptPage.html').then(() => {
+        return driver.querySelector('#submittingButton')
+      }).then((node) => {
+          return node.click()
+      }).then(() => {
+          return driver.waitForTitle('We Arrive Here')
+      }).then(() => {
+          return driver.title()
+      }).then((title) => {
+          expect(title).to.equal('We Arrive Here')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
