@@ -155,4 +155,12 @@ describe('javascript enabled', function () {
         done(err)
       })
   })
+
+  xit('switch to focused element', function(done) {
+      // TODO implement this api when we implement frame handling
+  })
+
+  xit('body is the default focused element', function(done) {
+      // TODO implement this api when we implement frame handling
+  })
 })
