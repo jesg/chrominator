@@ -167,4 +167,23 @@ describe('javascript enabled', function () {
   xit('change event is fired when focus is lost', function(done) {
       // TODO implement this horrid test when i have more time
   })
+
+  it('click even if something horrid happens', function(done) {
+      let node
+      driver.navigate(baseUrl + '/javascriptPage.html').then(() => {
+        return driver.querySelector('#error')
+      }).then((node) => {
+          return node.click()
+      }).then(() => {
+        return driver.querySelector('#error')
+      }).then((node) => {
+          return node.text()
+      }).then((text) => {
+          expect(text).to.not.be.null
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
