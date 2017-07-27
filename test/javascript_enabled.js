@@ -134,4 +134,25 @@ describe('javascript enabled', function () {
         done(err)
       })
   })
+
+  it('click should generate click event', function(done) {
+      let node
+      driver.navigate(baseUrl + '/javascriptPage.html').then(() => {
+        return driver.querySelector('#clickField')
+      }).then((result) => {
+          node = result
+          return node.getAttribute('value')
+      }).then((value) => {
+          expect(value).to.equal('Hello')
+          return node.click()
+      }).then(() => {
+          return driver.until(ExpectedConditions.nodeValueToEqual(node, 'Clicked'))
+      }).then((value) => {
+          expect(value).to.equal('Clicked')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
