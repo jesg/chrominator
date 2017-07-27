@@ -77,4 +77,23 @@ describe('javascript enabled', function () {
         done(err)
       })
   })
+
+  it('fire on change event when setting an element value', function(done) {
+      let dynamo
+      driver.navigate(baseUrl + '/javascriptPage.html').then(() => {
+        return driver.querySelector('#change')
+      }).then((node) => {
+          return node.sendKeys('foo')
+      }).then(() => {
+        return driver.querySelector('#result')
+      }).then((node) => {
+          return node.text()
+      }).then((text) => {
+          expect(text.trim()).to.equal('change')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
