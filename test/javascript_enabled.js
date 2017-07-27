@@ -186,4 +186,8 @@ describe('javascript enabled', function () {
         done(err)
       })
   })
+
+  xit('click a link that closes a window', function(done) {
+      // TODO very important test to implement when working on window support
+  })
 })
