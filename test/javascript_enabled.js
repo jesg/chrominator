@@ -50,4 +50,31 @@ describe('javascript enabled', function () {
         done(err)
       })
   })
+
+  it('document should reflect latest dom', function(done) {
+      let dynamo
+      driver.navigate(baseUrl + '/javascriptPage.html').then(() => {
+        return driver.querySelector('div#dynamo')
+      }).then((node) => {
+          return node.text()
+      }).then((text) => {
+          expect(text).to.equal('What\'s for dinner?')
+          return driver.querySelector('#updatediv')
+      }).then((node) => {
+          return node.click()
+      }).then(() => {
+          return driver.querySelector('div#dynamo')
+      }).then((node) => {
+          dynamo = node
+          return driver.until(ExpectedConditions.nodeTextToEqual(dynamo, 'Fish and chips!'))
+      }).then(() => {
+          return dynamo.text()
+      }).then((text) => {
+          expect(text).to.equal('Fish and chips!')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
