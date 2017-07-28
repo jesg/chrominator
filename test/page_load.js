@@ -101,4 +101,15 @@ describe('page load', function () {
         done(err)
       })
   }).timeout(5000)
+
+  it('interactive strategy should wait for document to be loaded', function(done) {
+      driver.navigate({url: baseUrl + '/sleep?time=3', pageLoadStrategy: 'interactive'}).then(() => {
+      }).then(() => {
+        return driver.waitForNodePresent('body')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  }).timeout(4000)
 })
