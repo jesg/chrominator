@@ -126,6 +126,21 @@ describe('page load', function () {
       })
   })
 
+  it('refresh a basic page', function(done) {
+      driver.navigate(baseUrl + '/base.html').then(() => {
+      }).then(() => {
+        return driver.reload()
+      }).then(() => {
+        return driver.title()
+      }).then((title) => {
+        expect(title).to.equal('base page')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
+
   xit('return error if the url does not resolve', function(done) {
       driver.navigate('http://www.thisurldoesnotexist.comx/').then(() => {
       }).then(() => {
