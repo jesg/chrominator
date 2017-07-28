@@ -125,4 +125,13 @@ describe('page load', function () {
         done(err)
       })
   })
+
+  xit('return error if the url does not resolve', function(done) {
+      driver.navigate('http://www.thisurldoesnotexist.comx/').then(() => {
+      }).then(() => {
+        done(new Error('this url should not resolve'))
+      }).catch((err) => {
+        done()
+      })
+  })
 })
