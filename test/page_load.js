@@ -112,4 +112,17 @@ describe('page load', function () {
         done(err)
       })
   }).timeout(4000)
+
+  it('default strategy should wait for the document to be loaded', function(done) {
+      driver.navigate(baseUrl + '/base.html').then(() => {
+      }).then(() => {
+        return driver.title()
+      }).then((title) => {
+        expect(title).to.equal('base page')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
