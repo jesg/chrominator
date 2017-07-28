@@ -186,4 +186,19 @@ describe('page load', function () {
   xit('handle browser history', function(done) {
     // i don't see this used much in browser automation so i'm going to procrastinate on it a bit
   })
+
+  it('should load page with document write and no document close', function(done) {
+      driver.navigate({url: baseUrl + '/document_write.html', pageLoadStrategy: 'loading'}).then(() => {
+        return driver.waitForNodePresent('body')
+      }).then((node) => {
+        return node.text()
+      }).then((text) => {
+        expect(text).to.contain('world')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
+
 })
