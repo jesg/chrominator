@@ -134,4 +134,13 @@ describe('page load', function () {
         done()
       })
   })
+
+  it('return error if the url is malformed', function(done) {
+      driver.navigate('www.test.com').then(() => {
+      }).then(() => {
+        done(new Error('this url should not resolve'))
+      }).catch((err) => {
+        done()
+      })
+  })
 })
