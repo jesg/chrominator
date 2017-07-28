@@ -161,4 +161,10 @@ describe('page load', function () {
         done(err)
       })
   })
+
+  xit('wait for all frames to load', function(done) {
+    // need to implement frame support
+    //
+    // the 'complete' strategy should wait for all the frames to load
+  })
 })
