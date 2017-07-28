@@ -152,4 +152,13 @@ describe('page load', function () {
         done()
       })
   })
+
+  it('should return when url does not connect', function(done) {
+      driver.navigate('http://localhost:3001').then(() => {
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
 })
