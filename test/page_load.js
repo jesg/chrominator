@@ -143,4 +143,13 @@ describe('page load', function () {
         done()
       })
   })
+
+  it('return error if the url is malformed in port part', function(done) {
+      driver.navigate('http://localhost:3001bla').then(() => {
+      }).then(() => {
+        done(new Error('this url should not resolve'))
+      }).catch((err) => {
+        done()
+      })
+  })
 })
