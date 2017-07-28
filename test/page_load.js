@@ -49,4 +49,26 @@ describe('page load', function () {
         done(err)
       })
   }).timeout(6000)
+
+  it('loading strategy should not wait for resources', function(done) {
+      driver.navigate({url: baseUrl + '/slowLoadingResourcePage.html', pageLoadStrategy: 'loading'}).then(() => {
+      }).then(() => {
+        return driver.waitForNodePresent('#peas')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  }).timeout(6000)
+
+  it('interactive strategy should not wait for resources', function(done) {
+      driver.navigate({url: baseUrl + '/slowLoadingResourcePage.html', pageLoadStrategy: 'interactive'}).then(() => {
+      }).then(() => {
+        return driver.waitForNodePresent('#peas')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  }).timeout(6000)
 })
