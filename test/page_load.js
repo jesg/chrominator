@@ -167,4 +167,8 @@ describe('page load', function () {
     //
     // the 'complete' strategy should wait for all the frames to load
   })
+
+  xit('handle browser history', function(done) {
+    // i don't see this used much in browser automation so i'm going to procrastinate on it a bit
+  })
 })
