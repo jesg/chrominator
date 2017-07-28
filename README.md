@@ -30,6 +30,13 @@ Abstraction to drive a webpage
 
 Navigate to a page and wait for the page to load.
 
+available page load strategies:
+
+-   none
+-   loading
+-   interactive
+-   complete (default)
+
 **Parameters**
 
 -   `args`  
@@ -92,10 +99,23 @@ Returns **[Node](#node)**
 
 Reload the current page
 
+available page load strategies:
+
+  none
+  loading
+  interactive
+  complete (default)
+
+**Parameters**
+
+-   `args`  
+
 **Examples**
 
 ```javascript
-driver.reload()
+await driver.reload()
+or
+await driver.reload({pageLoadStrategy: 'interactive', timeout: 200})
 ```
 
 ### pdf
@@ -371,12 +391,10 @@ Driver.createDriver(crd)
 
 ## Node
 
-Abstract DOM Element
-
 **Parameters**
 
--   `driver`  
--   `nodeId`  
+-   `driver` **[Driver](#driver)** 
+-   `nodeId` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The nodes node id
 
 ### getAttributes
 
@@ -644,10 +662,12 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## Node
 
+Abstract DOM Element
+
 **Parameters**
 
--   `driver` **[Driver](#driver)** 
--   `nodeId` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The nodes node id
+-   `driver`  
+-   `nodeId`  
 
 ### getAttributes
 
@@ -960,6 +980,38 @@ Tests the page title
 ```javascript
 // returns Node
 driver.until(ExpectedConditions.titleIs('Google'))
+```
+
+### nodeTextToEqual
+
+Tests the nodes text
+
+**Parameters**
+
+-   `node`  
+-   `desiredText`  
+
+**Examples**
+
+```javascript
+// returns Node
+driver.until(ExpectedConditions.nodeTextToEqual('Google'))
+```
+
+### nodeValueToEqual
+
+Tests the nodes value
+
+**Parameters**
+
+-   `node`  
+-   `desiredValue`  
+
+**Examples**
+
+```javascript
+// returns Node
+driver.until(ExpectedConditions.nodeValueToEqual('Google'))
 ```
 
 # License
