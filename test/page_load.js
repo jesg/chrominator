@@ -139,6 +139,19 @@ describe('page load', function () {
       })
   })
 
+  it('default strategy should handle meta redirect', function(done) {
+      driver.navigate(baseUrl + '/metaRedirect.html').then(() => {
+      }).then(() => {
+        return driver.title()
+      }).then((title) => {
+        expect(title).to.equal('base page')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  })
+
   it('refresh a basic page', function(done) {
       driver.navigate(baseUrl + '/base.html').then(() => {
       }).then(() => {
