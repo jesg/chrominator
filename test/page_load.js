@@ -39,7 +39,7 @@ describe('page load', function () {
   }).timeout(1000)
 
   it('undefined strategy should not wait for page refresh', function(done) {
-      driver.navigate({url: baseUrl + '/sleep?time=5', pageLoadStrategy: 'none'}).then(() => {
+      driver.navigate({url: baseUrl + '/sleep?time=4', pageLoadStrategy: 'none'}).then(() => {
         return new Wait({parent: driver, timeout: 10000}).until(ExpectedConditions.isNodePresent('#greeting'))
       }).then(() => {
         return driver.reload({pageLoadStrategy: 'none'})
@@ -207,6 +207,15 @@ describe('page load', function () {
       }).catch((err) => {
         done()
       })
+  }).timeout(3000)
+
+  it('should timeout if the page takes longer than the default page load timeout', function(done) {
+    driver.timeouts.pageLoad = 1000
+    driver.navigate({url: baseUrl + '/sleep?time=10'}).then(() => {
+      done(new Error('this test should throw an error'))
+    }).catch((err) => {
+      done()
+    })
   }).timeout(3000)
 
 })
