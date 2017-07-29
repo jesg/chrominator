@@ -201,4 +201,12 @@ describe('page load', function () {
       })
   })
 
+  it('should timeout if the page takes to long to load', function(done) {
+      driver.navigate({url: baseUrl + '/sleep?time=10', timeout: 1000}).then(() => {
+        done(new Error('this test should throw an error'))
+      }).catch((err) => {
+        done()
+      })
+  }).timeout(3000)
+
 })
