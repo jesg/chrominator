@@ -310,5 +310,8 @@ describe('evaluate api', function () {
       })
     })
 
+    xit('eval can timeout', function (done) {
+    })
+
 })
 
