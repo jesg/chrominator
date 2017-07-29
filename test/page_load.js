@@ -243,4 +243,6 @@ describe('page load', function () {
       })
   }).timeout(4000)
 
+  xit('timeout if page load after click takes to long', function(done) {
+  })
 })
