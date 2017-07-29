@@ -245,4 +245,17 @@ describe('page load', function () {
 
   xit('timeout if page load after click takes to long', function(done) {
   })
+
+  it('should not stop loading after timeout', function(done) {
+      driver.navigate({url: baseUrl + '/sleep?time=3', timeout: 1000}).then(() => {
+        done(new Error('this test should throw an error'))
+      }).catch((err) => {
+        return driver.waitForNodePresent('#greeting')
+      }).then(() => {
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  }).timeout(4000)
+
 })
