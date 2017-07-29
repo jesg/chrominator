@@ -12,6 +12,12 @@ module.exports = function (port, callback) {
       resp.setHeader('Content-Type', 'text/html')
       setTimeout(function() { resp.end('<p id="greeting">Hello</p>') }, ms)
   })
+  router.get('/redirect', function(req, resp) {
+      resp.writeHead(302, {
+        'Location': '/base.html'
+      })
+      resp.end()
+  })
   var server = http.createServer(router)
   server.listen(port, callback)
   return server
