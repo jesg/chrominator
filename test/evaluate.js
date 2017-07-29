@@ -295,5 +295,20 @@ describe('evaluate api', function () {
       })
     })
 
+    it('eval async timeout can be set globally', function (done) {
+      driver.timeouts.script = 1000
+      driver.navigate({url: baseUrl + '/base.html'}).then(() => {
+        return driver.evaluateAsync({functionDeclaration:
+                                    function () {
+          setTimeout(function() { resolve() }, 10000)
+        }
+        })
+      }).then(() => {
+        done(new Error('this test should throw an error'))
+      }).catch((err) => {
+        done()
+      })
+    })
+
 })
 
