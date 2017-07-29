@@ -280,5 +280,20 @@ describe('evaluate api', function () {
         })
     })
 
+    it('eval async can timeout', function (done) {
+      driver.navigate({url: baseUrl + '/base.html'}).then(() => {
+        return driver.evaluateAsync({functionDeclaration:
+                                    function () {
+          setTimeout(function() { resolve() }, 10000)
+        },
+        timeout: 1000
+        })
+      }).then(() => {
+        done(new Error('this test should throw an error'))
+      }).catch((err) => {
+        done()
+      })
+    })
+
 })
 
