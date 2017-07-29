@@ -218,4 +218,19 @@ describe('page load', function () {
     })
   }).timeout(3000)
 
+  it('can load another page after page load timeout', function(done) {
+      driver.navigate({url: baseUrl + '/sleep?time=10', timeout: 1000}).then(() => {
+        done(new Error('this test should throw an error'))
+      }).catch((err) => {
+        return driver.navigate(baseUrl + '/base.html')
+      }).then(() => {
+        return driver.title()
+      }).then((title) => {
+        expect(title).to.equal('base page')
+        done()
+      }).catch((err) => {
+        done(err)
+      })
+  }).timeout(3000)
+
 })
