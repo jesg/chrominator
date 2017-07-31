@@ -221,4 +221,24 @@ describe('core api', function () {
       done(err)
     })
   })
+
+  it('wait for page load after clicking on link', function (done) {
+    driver.navigate({url: baseUrl + '/base.html'}).then(() => {
+      return driver.querySelector({selector: '#result-page-link'})
+    }).then((node) => {
+      return driver.waitForPageLoad(() => {
+        return node.click()
+      })
+    }).then(() => {
+      return driver.title()
+    }).then((title) => {
+      expect(title).to.equal('Result Page')
+
+    }).then(() => {
+      done()
+    }).catch((err) => {
+      done(err)
+    })
+  })
+
 })
