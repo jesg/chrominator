@@ -32,7 +32,8 @@
   "dependencies": {
     "lighthouse": ">=2.1.0",
     "debug": ">=2.6.8",
-    "chrome-remote-interface": ">=0.23.2"
+    "chrome-remote-interface": ">=0.23.2",
+    "tmp": "^0.0.31"
   },
   "bugs": {
     "url": "https://github.com/jesg/chrominator/issues"
