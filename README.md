@@ -37,6 +37,12 @@ available page load strategies:
 -   interactive
 -   complete (default)
 
+All the page load strategies but none correspond to the `document.readyState`.  The none strategy does not wait for anything.
+
+The default page load strategy can be overridden globally by setting `driver.pageLoadStrategy`.
+
+The default timeout is 300,000 ms (5 minutes).  It can be overridded globally by setting `driver.timeouts.pageLoad`.
+
 **Parameters**
 
 -   `args`  
@@ -44,9 +50,27 @@ available page load strategies:
 **Examples**
 
 ```javascript
-await driver.navigate({url: 'http://google.com', pageLoadStrategy: 'interactive'})
+await driver.navigate({url: 'http://google.com', pageLoadStrategy: 'interactive', timeout: 1000})
 // or
 await driver.navigate('http://google.com')
+```
+
+### waitForPageLoad
+
+Wait for an action to trigger a page load.
+
+The action should return a `Promise`.
+
+**Parameters**
+
+-   `args`  
+
+**Examples**
+
+```javascript
+await driver.waitForPageLoad({action: () => { return driver.reload() }, pageLoadStrategy: 'interactive', timeout: 200})
+or
+await driver.waitForPageLoad(() => { return node.click() })
 ```
 
 ### title
@@ -101,10 +125,16 @@ Reload the current page
 
 available page load strategies:
 
-  none
-  loading
-  interactive
-  complete (default)
+-   none
+-   loading
+-   interactive
+-   complete (default)
+
+All the page load strategies but none correspond to the `document.readyState`.  The none strategy does not wait for anything.
+
+The default page load strategy can be overridden globally by setting `driver.pageLoadStrategy`.
+
+The default timeout is 300,000 ms (5 minutes).  It can be overridded globally by setting `driver.timeouts.pageLoad`.
 
 **Parameters**
 
