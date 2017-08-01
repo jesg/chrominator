@@ -1,6 +1,6 @@
 {
   "name": "chrominator",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "High Level automation framework for chrome",
   "repository": {
     "type": "git",
