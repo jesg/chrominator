@@ -212,9 +212,47 @@ Get cookies
 
 -   `args` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
+**Examples**
+
+```javascript
+cookies = await driver.getCookies({urls: ['https://www.google.com/intl/en/ads']})
+```
+
+### getCurrentCookies
+
+Get cookies for the current page
+
+**Examples**
+
+```javascript
+cookies = await driver.getCookies()
+```
+
 ### getAllCookies
 
 Get All cookies
+
+### deleteCookie
+
+Delete a cookie.
+
+The second parameter `url` is optional.  The current url is used
+if nothing is provided.
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The cookie name
+-   `url` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined))** The url the cookie is on
+
+**Examples**
+
+```javascript
+// delete cookie on a specific url
+await driver.deleteCookie('_ga', 'https://www.google.com/intl')
+or
+// delete cookie on the current url
+await driver.deleteCookie('_ga')
+```
 
 ### deleteAllCookies
 
@@ -227,6 +265,15 @@ Set a cookie
 **Parameters**
 
 -   `args`  
+
+**Examples**
+
+```javascript
+// set a cookie to a value on the current page
+await driver.setCookie({name: 'foo', value: 'bar'})
+or
+await driver.setCookie({name: 'foo', value: 'bar', url: 'https://www.google.com/intl'})
+```
 
 ### setContent
 
