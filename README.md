@@ -26,6 +26,22 @@ Chrominator(async (driver) => {
 
 Abstraction to drive a webpage
 
+### setSize
+
+Set the window size
+
+Warning: depends on an unstable api
+
+**Parameters**
+
+-   `options` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+**Examples**
+
+```javascript
+await driver.setSize({width: 1366 , height: 768})
+```
+
 ### navigate
 
 Navigate to a page and wait for the page to load.
