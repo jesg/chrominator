@@ -1087,8 +1087,7 @@ Tests the nodes text
 **Examples**
 
 ```javascript
-// returns Node
-driver.until(ExpectedConditions.nodeTextToEqual('Google'))
+await driver.until(ExpectedConditions.nodeTextToEqual(node, 'Google'))
 ```
 
 ### nodeValueToEqual
@@ -1103,8 +1102,7 @@ Tests the nodes value
 **Examples**
 
 ```javascript
-// returns Node
-driver.until(ExpectedConditions.nodeValueToEqual('Google'))
+await driver.until(ExpectedConditions.nodeValueToEqual(node, 'Google'))
 ```
 
 # License
