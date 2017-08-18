@@ -101,6 +101,61 @@ title = await driver.title()
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
+### handleJavaScriptDialog
+
+Handle a javascript dialog
+
+**Parameters**
+
+-   `options` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+**Examples**
+
+```javascript
+await driver.handleJavaScriptDialog({accept: true})
+// or accept and enter prompt text
+await driver.handleJavaScriptDialog({accept: true, promptText: 'hello'})
+```
+
+### triggerDialog
+
+Trigger and wait for a dialog to open.
+
+Warning: upstream alert handling is broken.
+
+**Parameters**
+
+-   `options`  
+
+**Examples**
+
+```javascript
+await driver.driver.triggerDialog(() => { return node.click() })
+// or
+await driver.driver.triggerDialog({action: () => { return node.click() }})
+```
+
+Returns **[Alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)** 
+
+### waitForEvent
+
+Simple utility to convert a one time event listener into a Promise.
+
+**Parameters**
+
+-   `eventName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the event in chrome remote debugger
+-   `options` **([object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function))** 
+
+**Examples**
+
+```javascript
+const waiter = driver.waitForEvent('Page.javascriptDialogOpening')
+await node.click()
+const dialog = await waiter
+// or
+const dialog = await driver.waitForEvent('Page.javascriptDialogOpening', () => { node.click() })
+```
+
 ### querySelector
 
 Search for a Node in the current document
@@ -482,12 +537,105 @@ Create and initialize the driver.
 Driver.createDriver(crd)
 ```
 
-## Node
+## Dialog
 
 **Parameters**
 
 -   `driver` **[Driver](#driver)** 
--   `nodeId` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The nodes node id
+-   `data`  
+-   `alert` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** alert meta-data
+
+### dismiss
+
+Dismiss a JavaScript Dialog
+
+**Examples**
+
+```javascript
+await alert.dismiss()
+```
+
+### accept
+
+Accept a JavaScript Dialog
+
+**Examples**
+
+```javascript
+await alert.accept()
+```
+
+### handle
+
+Handle a JavaScript Dialog
+
+**Parameters**
+
+-   `options`  
+
+**Examples**
+
+```javascript
+await alert.handle({accept: true})
+// or
+await alert.handle({accept: true, promptText: 'hello'})
+```
+
+## Dialog
+
+Abstract JavaScript Dialog
+
+Warning: broken upstream
+
+**Parameters**
+
+-   `driver`  
+-   `data`  
+
+### dismiss
+
+Dismiss a JavaScript Dialog
+
+**Examples**
+
+```javascript
+await alert.dismiss()
+```
+
+### accept
+
+Accept a JavaScript Dialog
+
+**Examples**
+
+```javascript
+await alert.accept()
+```
+
+### handle
+
+Handle a JavaScript Dialog
+
+**Parameters**
+
+-   `options`  
+
+**Examples**
+
+```javascript
+await alert.handle({accept: true})
+// or
+await alert.handle({accept: true, promptText: 'hello'})
+```
+
+## Node
+
+Abstract DOM Element
+
+**Parameters**
+
+-   `driver`  
+-   `nodeId`  
 
 ### getAttributes
 
@@ -755,12 +903,10 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## Node
 
-Abstract DOM Element
-
 **Parameters**
 
--   `driver`  
--   `nodeId`  
+-   `driver` **[Driver](#driver)** 
+-   `nodeId` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The nodes node id
 
 ### getAttributes
 
