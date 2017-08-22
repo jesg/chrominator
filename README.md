@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/jesg/chrominator.svg?branch=master)](https://travis-ci.org/jesg/chrominator)
 
+***Unmaintained:*** You can now use [puppeteer](https://github.com/GoogleChrome/puppeteer) the officially supported high level library by google.
+
 a high level api to chrome debugger for automation.
 
 currently working on core api built on promises.  might provide a high level fluent api similar to nightmarejs in the future.
